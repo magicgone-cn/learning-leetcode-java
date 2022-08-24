@@ -1,6 +1,10 @@
 package cn.magicgone.learning.leetcode.problem392;
 
-public class Solution {
+interface Solution {
+    boolean isSubsequence(String s, String t);
+}
+
+class Solution1 implements Solution {
     public boolean isSubsequence(String s, String t) {
         for (int i = 0, j = 0; i < s.length(); i++) {
             char sChar = s.charAt(i);
@@ -20,5 +24,23 @@ public class Solution {
             }
         }
         return true;
+    }
+}
+
+class Solution2 implements Solution {
+    @Override
+    public boolean isSubsequence(String s, String t) {
+        int i = 0;
+        int j = 0;
+        int sLength = s.length();
+        int tLength = t.length();
+        while (i < sLength && j < tLength) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;
+            }
+            j++;
+        }
+
+        return i == sLength;
     }
 }

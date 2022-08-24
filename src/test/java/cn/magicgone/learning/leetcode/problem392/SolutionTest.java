@@ -11,16 +11,18 @@ class SolutionTest {
 
     @ParameterizedTest
     @MethodSource()
-    public void isSubsequence(String s, String t, boolean expectedResult) {
-        Solution solution = new Solution();
-        boolean actualResult = solution.isSubsequence(s, t);
-        Assertions.assertEquals(expectedResult, actualResult);
+    public void isSubsequence(Solution[] solutions, String s, String t, boolean expectedResult) {
+        for (Solution solution : solutions) {
+            boolean actualResult = solution.isSubsequence(s, t);
+            Assertions.assertEquals(expectedResult, actualResult);
+        }
     }
 
     static Stream<Arguments> isSubsequence() {
+        Solution[] solutions = new Solution[]{new Solution1(), new Solution2()};
         return Stream.of(
-                Arguments.of("abc", "ahbgdc", true),
-                Arguments.of("axc", "ahbgdc", false)
+                Arguments.of(solutions, "abc", "ahbgdc", true),
+                Arguments.of(solutions, "axc", "ahbgdc", false)
         );
     }
 }
