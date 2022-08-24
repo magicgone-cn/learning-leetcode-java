@@ -1,4 +1,4 @@
-package cn.magicgone.leetcode.no2;
+package cn.magicgone.learning.leetcode.problem2;
 
 class ListNode {
     int val;

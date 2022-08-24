@@ -1,4 +1,4 @@
-package cn.magicgone.leetcode.no3;
+package cn.magicgone.learning.leetcode.problem3;
 
 import java.util.HashMap;
 import java.util.Map;
