@@ -8,17 +8,22 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-class RecursionSolutionTest {
+class SolutionTest {
 
     @ParameterizedTest
     @MethodSource
     void mergeTwoLists(ListNode list1, ListNode list2, ListNode expectedResult) {
-        Solution solution = new RecursionSolution();
-        ListNode mergedListNode = solution.mergeTwoLists(list1, list2);
-        Assertions.assertEquals(expectedResult, mergedListNode);
+        List<Solution> solutions = Arrays.asList(new RecursionSolution(), new SimpleRecursionSolution());
+        for (Solution solution : solutions) {
+            ListNode l1 = list1 == null ? null : list1.clone();
+            ListNode l2 = list2 == null ? null : list2.clone();
+            ListNode mergedListNode = solution.mergeTwoLists(l1, l2);
+            Assertions.assertEquals(expectedResult, mergedListNode);
+        }
     }
 
     static Stream<Arguments> mergeTwoLists() {
